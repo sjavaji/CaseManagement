@@ -28,7 +28,7 @@ export class ViewComponent implements OnInit {
 
     this.reqHeader = new XMLHttpRequest();
     this.reqHeader.open('POST', this.api, true);
-    this.reqHeader.setRequestHeader('Content-Type', 'application/xml');
+    this.reqHeader.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     this.reqHeader.send(this.body);
   }
 
