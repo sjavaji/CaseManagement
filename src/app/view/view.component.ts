@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHandler} from '@angular/common/http';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ViewComponent implements OnInit {
   body: any;
-  reqHeader: HttpHeaders;
+  reqHeader: XMLHttpRequest;
   api: any = 'https://training9-dev-ed.my.salesforce.com/services/oauth2/token';
   constructor(private http: HttpClient) { }
 
@@ -17,12 +17,6 @@ export class ViewComponent implements OnInit {
   }
 
   GetCases() {
-
-    this.reqHeader = new HttpHeaders();
-    this.reqHeader.set ('Access-Control-Allow-Origin', '*');
-    this.reqHeader.set ('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
-    this.reqHeader.set ('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Origin');
-
     this.body = {
       grant_type: 'password',
       crossOrigin : true,
@@ -31,8 +25,12 @@ export class ViewComponent implements OnInit {
       username: 'sudhirj9@gmail.com',
       password: 'Saikriti9#7tKfVQsvKBYhDnDjwjDRvYY0'
     };
-    const obs = this.http.post(this.api, this.body, {headers: this.reqHeader});
-    obs.subscribe((resp) => {console.log('resp-error')} );
+
+    this.reqHeader = new XMLHttpRequest();
+    this.reqHeader.open('POST', this.api, true);
+    this.reqHeader.setRequestHeader('X-PINGOTHER', 'pingpong');
+    this.reqHeader.setRequestHeader('Content-Type', 'application/xml');
+    this.reqHeader.send(this.body);
   }
 
 }
