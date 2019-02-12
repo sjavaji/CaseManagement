@@ -19,13 +19,13 @@ export class ViewComponent implements OnInit {
   GetCases() {
     this.body = {
       grant_type: 'password',
-      crossOrigin : true,
+      crossOrigin : 'true',
       client_id: '3MVG9YDQS5WtC11rYht7kc76KhK6x_5knZe5S2CJu9orWLwguJ7axBLJVYIC8fj80rw.L5Eib0sRkk9TaXwwt',
       client_secret: '1037031024583293084',
       username: 'sudhirj9@gmail.com',
       password: 'Saikriti9#7tKfVQsvKBYhDnDjwjDRvYY0'
     };
-    this.reqHeader = new HttpHeaders({'Content-Type': 'application/json'});
+    this.reqHeader = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
     const obs = this.http.post(this.api, this.body, {headers: this.reqHeader});
     obs.subscribe((resp) => { console.log('resp-error')});
   }
