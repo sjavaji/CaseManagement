@@ -25,7 +25,7 @@ export class ViewComponent implements OnInit {
       username: 'sudhirj9@gmail.com',
       password: 'Saikriti9#7tKfVQsvKBYhDnDjwjDRvYY0'
     };
-    this.reqHeader = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+    this.reqHeader = new HttpHeaders({Accept : "application/json","Access-Control-Allow-Origin" : "*"});
     const obs = this.http.post(this.api, this.body, {headers: this.reqHeader});
     obs.subscribe((resp) => { console.log('resp-error')});
   }
