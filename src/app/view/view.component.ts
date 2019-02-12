@@ -28,7 +28,6 @@ export class ViewComponent implements OnInit {
 
     this.reqHeader = new XMLHttpRequest();
     this.reqHeader.open('POST', this.api, true);
-    this.reqHeader.setRequestHeader('X-PINGOTHER', 'pingpong');
     this.reqHeader.setRequestHeader('Content-Type', 'application/xml');
     this.reqHeader.send(this.body);
   }
