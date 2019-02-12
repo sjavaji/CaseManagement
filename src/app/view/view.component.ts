@@ -19,6 +19,7 @@ export class ViewComponent implements OnInit {
   GetCases() {
     this.body = {
       grant_type: 'password',
+      crossOrigin : true,
       client_id: '3MVG9YDQS5WtC11rYht7kc76KhK6x_5knZe5S2CJu9orWLwguJ7axBLJVYIC8fj80rw.L5Eib0sRkk9TaXwwt',
       client_secret: '1037031024583293084',
       username: 'sudhirj9@gmail.com',
