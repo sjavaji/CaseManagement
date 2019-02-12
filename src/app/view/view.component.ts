@@ -17,6 +17,12 @@ export class ViewComponent implements OnInit {
   }
 
   GetCases() {
+
+    this.reqHeader = new HttpHeaders();
+    this.reqHeader.set ('Access-Control-Allow-Origin', '*');
+    this.reqHeader.set ('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
+    this.reqHeader.set ('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Origin');
+
     this.body = {
       grant_type: 'password',
       crossOrigin : true,
@@ -25,8 +31,6 @@ export class ViewComponent implements OnInit {
       username: 'sudhirj9@gmail.com',
       password: 'Saikriti9#7tKfVQsvKBYhDnDjwjDRvYY0'
     };
-
-    this.reqHeader = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : '*'});
     const obs = this.http.post(this.api, this.body, {headers: this.reqHeader});
     obs.subscribe((resp) => {console.log('resp-error')} );
   }
